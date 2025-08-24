@@ -11,4 +11,6 @@
 body {
 	font-family: "Ubuntu", sans-serif;
 	font-weight: 400;
+	background-color: var(--color-gun-metal);
+	color: white;
 }
