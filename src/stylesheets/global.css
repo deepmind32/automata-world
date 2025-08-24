@@ -1,0 +1,14 @@
+:root {
+	--color-steel-blue: #4f7cac;
+	--color-mint-green: #c0e0de;
+	--color-gun-metal: #162521;
+	--color-outer-space: #3c474b;
+	--color-ice-blue: #9eefe5;
+
+	font-size: 18px;
+}
+
+body {
+	font-family: "Ubuntu", sans-serif;
+	font-weight: 400;
+}
