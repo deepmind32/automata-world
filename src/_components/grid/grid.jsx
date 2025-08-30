@@ -4,18 +4,19 @@ import React, { useState } from "react";
 const colors = {
 	grey: "grey",
 	blue: "blue",
+	red: "red",
 };
 
 export default function Grid({
 	compute_next_generation,
 	size = 10,
-	default_value = 0,
+	default_color,
 	current_color = "blue",
 }) {
 	const [grid, set_grid] = useState(
 		Array(size)
-			.fill(default_value)
-			.map((_) => Array(size).fill("grey"))
+			.fill(default_color)
+			.map((_) => Array(size).fill(default_color))
 	);
 
 	const handle_cell_clicked = (i, j) => {

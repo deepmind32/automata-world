@@ -12,6 +12,12 @@ export default function App() {
 		dead: "red",
 		alive: "blue",
 	});
+	const [current_color, set_current_color] = useState("dead");
+	const default_color = "dead";
+
+	const handle_color_change = (color) => {
+		set_current_color(color);
+	};
 
 	return (
 		<main className={styles["app"]}>
@@ -24,9 +30,17 @@ export default function App() {
 						<FaPause />
 					</button>
 				</div> */}
-				<ColorPicker colors={current_grid_items} />
+				<ColorPicker
+					colors={current_grid_items}
+					default_color={default_color}
+					on_color_selected={handle_color_change}
+				/>
 			</header>
-			<Grid size={30} />
+			<Grid
+				size={30}
+				default_color={current_grid_items[default_color]}
+				current_color={current_grid_items[current_color]}
+			/>
 			<div className={styles["app__help__wrapper"]}>
 				<button className={styles["app__fab"]}>
 					<LuBadgeHelp size="3rem" />
