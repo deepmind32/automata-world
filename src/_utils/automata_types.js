@@ -1,5 +1,11 @@
+import { GiLifeBar, GiBrain } from "react-icons/gi";
+import { HiMiniBugAnt } from "react-icons/hi2";
+import { PiCircuitryFill } from "react-icons/pi";
+
 const AUTOMATAS = {
 	"Conway's Game of Life": {
+		icon: GiLifeBar,
+		info: "Cells live or die by neighbors",
 		default_cell: "Dead Cell",
 		initial_create_cell: "Alive Cell",
 		cells: {
@@ -14,6 +20,8 @@ const AUTOMATAS = {
 		},
 	},
 	"Langton's Ant": {
+		info: "Ant flips tiles, turns, repeats",
+		icon: HiMiniBugAnt,
 		default_cell: "Black Cell",
 		initial_create_cell: "White Cell",
 		cells: {
@@ -28,6 +36,8 @@ const AUTOMATAS = {
 		},
 	},
 	"Brian's Brain": {
+		info: "Cells flash, then cool down",
+		icon: GiBrain,
 		default_cell: "Dead Cell",
 		initial_create_cell: "Alive Cell",
 		cells: {
@@ -46,6 +56,8 @@ const AUTOMATAS = {
 		},
 	},
 	"Wire World": {
+		info: "Electrons move through wires",
+		icon: PiCircuitryFill,
 		default_cell: "Empty Cell",
 		initial_create_cell: "Conductor",
 		cells: {
@@ -71,4 +83,16 @@ const AUTOMATAS = {
 
 export function get_automata_info(automata) {
 	return AUTOMATAS[automata];
+}
+
+export function get_all_automata() {
+	return Object.fromEntries(
+		Object.entries(AUTOMATAS).map(([name, data]) => [
+			name,
+			{
+				icon: data.icon,
+				info: data.info,
+			},
+		])
+	);
 }

@@ -1,5 +1,5 @@
 import styles from "./grid.module.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function Grid({
 	compute_next_generation,
@@ -14,16 +14,20 @@ export default function Grid({
 			.map((_) => Array(size).fill(default_cell))
 	);
 
+	useEffect(() => {
+		set_grid(
+			Array(size)
+				.fill(null)
+				.map((_) => Array(size).fill(default_cell))
+		);
+	}, [default_cell, size]);
+
 	const handle_cell_clicked = (i, j) => {
 		set_grid((prev) => {
 			const new_prev = [...prev];
 			new_prev[i][j] = current_create_cell;
 			return new_prev;
 		});
-	};
-
-	const handle_next_generation = () => {
-		set_grid((prev) => compute_next_generation(prev));
 	};
 
 	return (
@@ -42,7 +46,7 @@ export default function Grid({
 								key={j}
 								className={styles["grid__cell"]}
 								onClick={handle_cell_clicked.bind(null, i, j)}
-								style={{ backgroundColor: cells[cell_name].color }}
+								style={{ backgroundColor: cells[cell_name]?.color }}
 							>
 								{i}, {j}
 							</button>
@@ -50,7 +54,6 @@ export default function Grid({
 					</React.Fragment>
 				))}
 			</div>
-			<button onClick={handle_next_generation}>Next</button>
 		</>
 	);
 }

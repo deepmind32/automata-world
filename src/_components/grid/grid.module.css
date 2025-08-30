@@ -1,7 +1,6 @@
 .grid {
 	display: grid;
 	gap: 5px;
-	padding: 10px;
 }
 
 .grid__cell {

@@ -1,4 +1,4 @@
-.color_picker {
+.option_picker {
 	background-color: var(--color-mint-green);
 	color: var(--color-outer-space);
 	padding: 1rem;
@@ -7,36 +7,40 @@
 	font-weight: 500;
 }
 
-.color_picker__heading {
+.option_picker__heading {
 	font-size: 1.25rem;
 	margin-bottom: 1rem;
+	transition: font-size 0.25s ease;
 }
-.color_picker:not(.color_picker--inactive) .color_picker__heading {
-	display: none;
+.option_picker:not(.option_picker--inactive) .option_picker__heading {
+	font-size: 1rem;
+	margin-bottom: 0;
+	transition: font-size 0.25s ease;
+	/* display: none; */
 }
 
-.color_picker__options li {
+.option_picker__options li {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	padding: 0.5rem 0.25rem;
 	border-radius: 0.5rem;
 }
-.color_picker.color_picker--inactive li button:last-child {
+.option_picker.option_picker--inactive li button:last-child {
 	display: none;
 }
-.color_picker:not(.color_picker--inactive) li:not(.li--active) {
+.option_picker:not(.option_picker--inactive) li:not(.li--active) {
 	display: none;
 }
 
-.color_picker__options li:hover {
+.option_picker__options li:hover {
 	background-color: #9FD0CD;
 }
-.color_picker__options li.li--active:hover {
+.option_picker__options li.li--active:hover {
 	background-color: transparent;
 }
 
-.color_picker__options button {
+.option_picker__options button {
 	display: flex;
 	gap: 1rem;
 	align-items: center;
@@ -47,12 +51,12 @@
 	cursor: pointer;
 }
 
-.color_picker__options__info p:first-child {
+.option_picker__options__info p:first-child {
 	font-weight: 500;
 	font-size: 1rem;
 }
 
-.color_picker__options__sample {
+.option_picker__options__sample {
 	width: 2rem;
 	height: 2rem;
 	border-radius: 1rem;
