@@ -14,3 +14,7 @@ body {
 	background-color: var(--color-gun-metal);
 	color: white;
 }
+
+body * {
+	font-family: "Ubuntu", sans-serif;
+}

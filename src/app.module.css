@@ -1,0 +1,37 @@
+.app {
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+}
+
+.app__header {
+	padding: 1rem;
+}
+
+.app__help__wrapper,
+.app__settings__wrapper {
+	position: fixed;
+	bottom: 2rem;
+	left: 2rem;
+}
+
+.app__settings__wrapper {
+	left: auto;
+	right: 2rem;
+}
+
+.app__fab {
+	background-color: var(--color-gun-metal);
+	outline: none;
+	border: none;
+	color: var(--color-ice-blue);
+	padding: 0.4rem;
+	border-radius: 100px;
+	transition: transform 0.25s ease-in;
+}
+
+.app__fab:hover {
+	cursor: pointer;
+	transform: scale(1.1);
+	transition: transform 0.25s ease-out;
+}
