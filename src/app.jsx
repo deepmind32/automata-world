@@ -6,40 +6,34 @@ import { FaPause, FaPlay } from "react-icons/fa";
 import Grid from "./_components/grid/grid";
 import styles from "./app.module.css";
 import ColorPicker from "./_components/color-picker/color-picker";
+import { get_automata_info } from "./_utils/automata_types";
 
 export default function App() {
-	const [current_grid_items, set_current_grid_items] = useState({
-		dead: "red",
-		alive: "blue",
-	});
-	const [current_color, set_current_color] = useState("dead");
-	const default_color = "dead";
+	const current_automata = "Conway's Game of Life";
+	const current_automata_info = get_automata_info(current_automata);
 
-	const handle_color_change = (color) => {
-		set_current_color(color);
+	const [current_create_cell, set_current_create_cell] = useState(
+		current_automata_info["initial_create_cell"]
+	);
+
+	const handle_create_cell_change = (cell_name) => {
+		set_current_create_cell(cell_name);
 	};
 
 	return (
 		<main className={styles["app"]}>
 			<header className={styles["app__header"]}>
-				{/* <div className={styles["app__header__controls"]}>
-					<button>
-						<FaPlay />
-					</button>
-					<button>
-						<FaPause />
-					</button>
-				</div> */}
-				<ColorPicker
-					colors={current_grid_items}
-					default_color={default_color}
-					on_color_selected={handle_color_change}
-				/>
+				{/* <ColorPicker
+					cells={current_automata_info["cells"]}
+					initial_create_cell={current_automata_info["initial_create_cell"]}
+					on_create_cell_change={handle_create_cell_change}
+				/> */}
 			</header>
 			<Grid
 				size={30}
-				default_color={current_grid_items[default_color]}
-				current_color={current_grid_items[current_color]}
+				cells={current_automata_info["cells"]}
+				default_cell={current_automata_info["default_cell"]}
+				current_create_cell={current_create_cell}
 			/>
 			<div className={styles["app__help__wrapper"]}>
 				<button className={styles["app__fab"]}>

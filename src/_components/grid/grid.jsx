@@ -1,28 +1,23 @@
 import styles from "./grid.module.css";
 import React, { useState } from "react";
 
-const colors = {
-	grey: "grey",
-	blue: "blue",
-	red: "red",
-};
-
 export default function Grid({
 	compute_next_generation,
+	cells,
+	default_cell,
+	current_create_cell,
 	size = 10,
-	default_color,
-	current_color = "blue",
 }) {
 	const [grid, set_grid] = useState(
 		Array(size)
-			.fill(default_color)
-			.map((_) => Array(size).fill(default_color))
+			.fill(null)
+			.map((_) => Array(size).fill(default_cell))
 	);
 
 	const handle_cell_clicked = (i, j) => {
 		set_grid((prev) => {
 			const new_prev = [...prev];
-			new_prev[i][j] = current_color;
+			new_prev[i][j] = current_create_cell;
 			return new_prev;
 		});
 	};
@@ -42,12 +37,12 @@ export default function Grid({
 			>
 				{grid.map((values, i) => (
 					<React.Fragment key={i}>
-						{values.map((color_key, j) => (
+						{values.map((cell_name, j) => (
 							<button
 								key={j}
 								className={styles["grid__cell"]}
 								onClick={handle_cell_clicked.bind(null, i, j)}
-								style={{ backgroundColor: colors[color_key] }}
+								style={{ backgroundColor: cells[cell_name].color }}
 							>
 								{i}, {j}
 							</button>
