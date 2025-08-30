@@ -23,11 +23,11 @@ export default function App() {
 	return (
 		<main className={styles["app"]}>
 			<header className={styles["app__header"]}>
-				{/* <ColorPicker
+				<ColorPicker
 					cells={current_automata_info["cells"]}
 					initial_create_cell={current_automata_info["initial_create_cell"]}
 					on_create_cell_change={handle_create_cell_change}
-				/> */}
+				/>
 			</header>
 			<Grid
 				size={30}

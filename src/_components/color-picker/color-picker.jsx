@@ -4,43 +4,42 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 
 // colors = object with key (Name) value = color
 export default function ColorPicker({
-	colors,
-	default_color,
-	on_color_selected,
+	cells,
+	initial_create_cell,
+	on_create_cell_change,
 }) {
-	const [color, set_color] = useState(null);
-	const [selected_color, set_selected_color] = useState(default_color);
+	const [selected_cell, set_selected_cell] = useState(initial_create_cell);
 
-	const handle_color_btn_pressed = (color) => {
-		set_selected_color(color);
-		on_color_selected(color);
+	const handle_color_btn_pressed = (cell_name) => {
+		set_selected_cell(cell_name);
+		on_create_cell_change(cell_name);
 	};
 	const handle_remove_color = () => {
-		set_selected_color(undefined);
+		set_selected_cell(undefined);
 	};
 
 	return (
 		<div
 			className={`${styles["color_picker"]} ${
-				selected_color ?? styles["color_picker--inactive"]
+				selected_cell ? styles["color_picker--inactive"] : ""
 			}`}
 		>
 			<p className={styles["color_picker__heading"]}>Cell Type</p>
 
 			<ul className={styles["color_picker__options"]}>
-				{Object.keys(colors).map((item) => (
+				{Object.keys(cells).map((cell_name) => (
 					<li
-						key={item}
-						className={selected_color == item && styles["li--active"]}
+						key={cell_name}
+						className={selected_cell == cell_name ? styles["li--active"] : ""}
 					>
-						<button onClick={handle_color_btn_pressed.bind(null, item)}>
+						<button onClick={handle_color_btn_pressed.bind(null, cell_name)}>
 							<div
 								className={styles["color_picker__options__sample"]}
-								style={{ backgroundColor: colors[item] }}
+								style={{ backgroundColor: cells[cell_name].color }}
 							/>
 							<div className={styles["color_picker__options__info"]}>
-								<p>{item}</p>
-								<p>Represents alive</p>
+								<p>{cell_name}</p>
+								<p>{cells[cell_name].info}</p>
 							</div>
 						</button>
 
