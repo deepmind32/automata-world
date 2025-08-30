@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { LuBadgeHelp } from "react-icons/lu";
 import { TbSettingsBolt } from "react-icons/tb";
-import { FaPause, FaPlay } from "react-icons/fa";
 
 import Grid from "./_components/grid/grid";
 import styles from "./app.module.css";

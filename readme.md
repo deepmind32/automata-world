@@ -37,5 +37,5 @@ Below is the rules and explanation of each game.
 - Black: empty, Blue: electron head, Red: electron tail, Yellow: conductor
 - **Rules at each step**
 1. electron head becomes electron tail
-2. electron train becomes conductor
+2. electron tail becomes conductor
 3. conductor becomes head if 1-2 neighbours are head else conductor

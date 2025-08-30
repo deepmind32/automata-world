@@ -2,7 +2,7 @@
 	background-color: var(--color-mint-green);
 	color: var(--color-outer-space);
 	padding: 1rem;
-	width: 300px;
+	width: 350px;
 	border-radius: 0.5rem;
 	font-weight: 500;
 }
@@ -39,6 +39,7 @@
 .color_picker__options button {
 	display: flex;
 	gap: 1rem;
+	align-items: center;
 	text-align: left;
 
 	background-color: transparent;
