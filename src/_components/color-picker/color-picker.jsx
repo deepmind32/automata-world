@@ -21,7 +21,7 @@ export default function ColorPicker({
 	return (
 		<div
 			className={`${styles["color_picker"]} ${
-				selected_cell ? styles["color_picker--inactive"] : ""
+				selected_cell ? "" : styles["color_picker--inactive"]
 			}`}
 		>
 			<p className={styles["color_picker__heading"]}>Cell Type</p>
