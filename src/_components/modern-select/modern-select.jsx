@@ -53,7 +53,9 @@ export default function ModernSelect({
 								{type == "icon" && <Icon size="2rem" />}
 								<div className={styles["option_picker__options__info"]}>
 									<p>{option_name}</p>
-									<p style={{ width: 200 }}>{options[option_name].info}</p>
+									{options[option_name]?.info ?? (
+										<p style={{ width: 200 }}>{options[option_name].info}</p>
+									)}
 								</div>
 							</button>
 

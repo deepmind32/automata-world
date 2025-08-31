@@ -1,3 +1,9 @@
+import {
+	FaArrowDown,
+	FaArrowLeft,
+	FaArrowRight,
+	FaArrowUp,
+} from "react-icons/fa6";
 import { GiLifeBar, GiBrain } from "react-icons/gi";
 import { HiMiniBugAnt } from "react-icons/hi2";
 import { PiCircuitryFill } from "react-icons/pi";
@@ -22,16 +28,50 @@ const AUTOMATAS = {
 	"Langton's Ant": {
 		info: "Ant flips tiles, turns, repeats",
 		icon: HiMiniBugAnt,
-		default_cell: "Black Cell",
-		initial_create_cell: "White Cell",
+		default_cell: "Black Cell Forward",
+		initial_create_cell: "White Cell Forward",
 		cells: {
-			"Black Cell": {
+			"Black Cell Forward": {
+				name: "Black Cell",
 				color: "black",
+				icon: FaArrowUp,
 				info: "Turn left, flip cell to white and move forward",
 			},
-			"White Cell": {
+			"Black Cell Backward": {
+				color: "black",
+				icon: FaArrowDown,
+				visible: false,
+			},
+			"Black Cell Left": {
+				color: "black",
+				icon: FaArrowLeft,
+				visible: false,
+			},
+			"Black Cell Right": {
+				color: "black",
+				icon: FaArrowRight,
+				visible: false,
+			},
+			"White Cell Forward": {
+				name: "White Cell",
+				icon: FaArrowUp,
 				color: "white",
 				info: "Turn right, flip cell to black and move forward",
+			},
+			"White Cell Backward": {
+				icon: FaArrowDown,
+				color: "white",
+				visible: false,
+			},
+			"White Cell Left": {
+				icon: FaArrowLeft,
+				color: "white",
+				visible: false,
+			},
+			"White Cell Right": {
+				icon: FaArrowRight,
+				color: "white",
+				visible: false,
 			},
 		},
 	},
@@ -95,4 +135,15 @@ export function get_all_automata() {
 			},
 		])
 	);
+}
+
+export function get_automata_cell_type(automata) {
+	const automata_cells = AUTOMATAS[automata].cells;
+
+	const filtered_automata_cells = Object.fromEntries(
+		Object.entries(automata_cells).filter(
+			([_, meta]) => meta["visible"] ?? true
+		)
+	);
+	return filtered_automata_cells;
 }

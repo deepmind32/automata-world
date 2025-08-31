@@ -7,7 +7,11 @@ import { BiSkipNextCircle } from "react-icons/bi";
 import Grid from "./_components/grid/grid";
 import styles from "./app.module.css";
 import ModernSelect from "./_components/modern-select/modern-select";
-import { get_all_automata, get_automata_info } from "./_utils/automata_types";
+import {
+	get_all_automata,
+	get_automata_cell_type,
+	get_automata_info,
+} from "./_utils/automata_types";
 import get_next_generation_step from "./_utils/compute-next-generation";
 
 export default function App() {
@@ -84,7 +88,7 @@ export default function App() {
 
 				<ModernSelect
 					name={"Cell Type"}
-					options={current_automata_info["cells"]}
+					options={get_automata_cell_type(current_automata)}
 					initial_option={current_automata_info["initial_create_cell"]}
 					on_option_change={handle_create_cell_change}
 				/>
