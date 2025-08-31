@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 
 export default function Grid({
 	compute_next_generation,
+	time_step = 0,
 	cells,
 	default_cell,
 	current_create_cell,
@@ -21,6 +22,12 @@ export default function Grid({
 				.map((_) => Array(size).fill(default_cell))
 		);
 	}, [default_cell, size]);
+
+	useEffect(() => {
+		if (time_step > 0) {
+			set_grid(compute_next_generation(grid));
+		}
+	}, [time_step]);
 
 	const handle_cell_clicked = (i, j) => {
 		set_grid((prev) => {
