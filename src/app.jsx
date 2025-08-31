@@ -48,7 +48,7 @@ export default function App() {
 	useEffect(() => {
 		const generation_step_intervals = setInterval(() => {
 			generation_timer_running && set_generation_step((prev) => prev + 1);
-		}, 2000);
+		}, 500);
 
 		return () => {
 			clearInterval(generation_step_intervals);

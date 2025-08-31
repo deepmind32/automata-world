@@ -1,8 +1,5 @@
 import { get_neighbours } from "../automata";
-
-function copy_grid(grid) {
-	return JSON.parse(JSON.stringify(grid));
-}
+import { copy_grid } from "../grid";
 
 export default function compute_next_generation(grid) {
 	const updated_grid = copy_grid(grid);
