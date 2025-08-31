@@ -48,16 +48,26 @@ export default function Grid({
 			>
 				{grid.map((values, i) => (
 					<React.Fragment key={i}>
-						{values.map((cell_name, j) => (
-							<button
-								key={j}
-								className={styles["grid__cell"]}
-								onClick={handle_cell_clicked.bind(null, i, j)}
-								style={{ backgroundColor: cells[cell_name]?.color }}
-							>
-								{i}, {j}
-							</button>
-						))}
+						{values.map((cell_name, j) => {
+							const Cell_icon = cells[cell_name]?.icon;
+
+							return (
+								<button
+									key={j}
+									className={styles["grid__cell"]}
+									onClick={handle_cell_clicked.bind(null, i, j)}
+									style={{ backgroundColor: cells[cell_name]?.color }}
+								>
+									{Cell_icon ? (
+										<Cell_icon color="#9CA4A2"/>
+									) : (
+										<>
+											{i}, {j}
+										</>
+									)}
+								</button>
+							);
+						})}
 					</React.Fragment>
 				))}
 			</div>
