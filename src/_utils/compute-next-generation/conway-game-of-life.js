@@ -1,3 +1,5 @@
+import { get_neighbours } from "../automata";
+
 function copy_grid(grid) {
 	return JSON.parse(JSON.stringify(grid));
 }
@@ -5,9 +7,11 @@ function copy_grid(grid) {
 export default function compute_next_generation(grid) {
 	const updated_grid = copy_grid(grid);
 
-	const temp = grid[0][0];
-	updated_grid[0][0] = updated_grid[0][1];
-	updated_grid[0][1] = grid[0][0];
+	console.log(get_neighbours(0, 0, grid.length));
+	// for (let y = 0; y<grid.length; y++) {
+	// 	for (let x=0; x<grid.length; x++) {
 
+	// 	}
+	// }
 	return updated_grid;
 }
