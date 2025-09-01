@@ -88,8 +88,7 @@ export default function App() {
 
 				<ModernSelect
 					name={"Cell Type"}
-					// options={get_automata_cell_type(current_automata)}
-					options={current_automata_info["cells"]}
+					options={get_automata_cell_type(current_automata)}
 					initial_option={current_automata_info["initial_create_cell"]}
 					on_option_change={handle_create_cell_change}
 				/>
@@ -99,7 +98,7 @@ export default function App() {
 				<Grid
 					compute_next_generation={get_next_generation_step(current_automata)}
 					time_step={generation_step}
-					size={3}
+					size={30}
 					cells={current_automata_info["cells"]}
 					default_cell={current_automata_info["default_cell"]}
 					current_create_cell={current_create_cell}

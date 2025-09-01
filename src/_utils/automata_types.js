@@ -28,11 +28,11 @@ const AUTOMATAS = {
 	"Langton's Ant": {
 		info: "Ant flips tiles, turns, repeats",
 		icon: HiMiniBugAnt,
-		default_cell: "Black Cell Forward",
+		default_cell: "Black Cell",
 		initial_create_cell: "White Cell Forward",
 		cells: {
 			"Black Cell Forward": {
-				name: "Black Cell",
+				name: "Ant on Black Cell",
 				color: "black",
 				icon: FaArrowUp,
 				info: "Turn left, flip cell to white and move forward",
@@ -53,7 +53,7 @@ const AUTOMATAS = {
 				visible: false,
 			},
 			"White Cell Forward": {
-				name: "White Cell",
+				name: "Ant on White Cell",
 				icon: FaArrowUp,
 				color: "white",
 				info: "Turn right, flip cell to black and move forward",
@@ -70,6 +70,14 @@ const AUTOMATAS = {
 			},
 			"White Cell Right": {
 				icon: FaArrowRight,
+				color: "white",
+				visible: false,
+			},
+			"Black Cell": {
+				color: "black",
+				visible: false,
+			},
+			"White Cell": {
 				color: "white",
 				visible: false,
 			},
