@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { LuBadgeHelp } from "react-icons/lu";
 import { TbSettingsBolt } from "react-icons/tb";
 import { FaRegCirclePause, FaRegCirclePlay } from "react-icons/fa6";
+import { RiResetLeftFill } from "react-icons/ri";
 import { BiSkipNextCircle } from "react-icons/bi";
 
 import Grid from "./_components/grid/grid";
@@ -15,6 +16,25 @@ import {
 import get_next_generation_step from "./_utils/compute-next-generation";
 
 export default function App() {
+	const scroll_container_ref = useRef(null);
+	const grid_ref = useRef(null);
+
+	useEffect(() => {
+		const container = scroll_container_ref.current;
+		const grid = grid_ref.current;
+
+		if (container && grid) {
+			const scroll_left = (grid.scrollWidth - container.clientWidth) / 2;
+			const scroll_top = (grid.scrollHeight - container.clientHeight) / 2;
+
+			container.scrollTo({
+				left: scroll_left,
+				top: scroll_top,
+				behavior: "smooth",
+			});
+		}
+	}, []);
+
 	const all_automatas = get_all_automata();
 	const [current_automata, set_current_automata] = useState(
 		"Conway's Game of Life"
@@ -46,13 +66,16 @@ export default function App() {
 		} else if (type === "next") {
 			set_generation_timer_running(false);
 			set_generation_step((prev) => prev + 1);
+		} else if (type === "reset") {
+			set_generation_timer_running(false);
+			set_generation_step(0);
 		}
 	};
 
 	useEffect(() => {
 		const generation_step_intervals = setInterval(() => {
 			generation_timer_running && set_generation_step((prev) => prev + 1);
-		}, 500);
+		}, 250);
 
 		return () => {
 			clearInterval(generation_step_intervals);
@@ -84,6 +107,9 @@ export default function App() {
 					<button onClick={handle_app_controls_clicked.bind(null, "next")}>
 						<BiSkipNextCircle size="2.3rem" />
 					</button>
+					<button onClick={handle_app_controls_clicked.bind(null, "reset")}>
+						<RiResetLeftFill size="1.8rem" />
+					</button>
 				</div>
 
 				<ModernSelect
@@ -94,9 +120,10 @@ export default function App() {
 				/>
 			</header>
 
-			<div className={styles["app__grid"]}>
+			<div className={styles["app__grid"]} ref={scroll_container_ref}>
 				<Grid
 					compute_next_generation={get_next_generation_step(current_automata)}
+					ref={grid_ref}
 					time_step={generation_step}
 					size={30}
 					cells={current_automata_info["cells"]}
