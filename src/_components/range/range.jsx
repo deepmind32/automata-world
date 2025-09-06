@@ -8,6 +8,7 @@ export default function Range({
 	max,
 	default_value,
 	on_change,
+	step,
 }) {
 	const [value, set_value] = useState(default_value);
 
@@ -33,6 +34,7 @@ export default function Range({
 					className={styles["slider"]}
 					defaultValue={default_value}
 					onChange={handle_range_change}
+					step={step ?? 1}
 				/>
 				<div className={styles["slider__info"]}>
 					<p>{min}</p>

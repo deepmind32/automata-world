@@ -16,6 +16,7 @@ import {
 import get_next_generation_step from "./_utils/compute-next-generation";
 import toast, { Toaster } from "react-hot-toast";
 import Settings from "./_components/settings/settings";
+import FabContent from "./_components/fab-content/fab-content";
 
 export default function App() {
 	const scroll_container_ref = useRef(null);
@@ -56,7 +57,7 @@ export default function App() {
 		useState(false);
 
 	const [is_settings_visible, set_is_settings_visible] = useState(false);
-	const [is_help_visible, set_is_help_visible] = useState(true);
+	const [is_help_visible, set_is_help_visible] = useState(false);
 
 	const handle_create_cell_change = (cell_name) => {
 		set_current_create_cell(cell_name);
@@ -164,11 +165,15 @@ export default function App() {
 			</div>
 			<div className={styles["app__help__wrapper"]}>
 				{is_help_visible && (
-					<div className={styles["app__help"]}>
-						{current_automata_info["description"].map((item, index) => (
-							<p key={index}>{item}</p>
-						))}
-					</div>
+					<FabContent
+						title="Help"
+						children={current_automata_info["description"].map(
+							(item, index) => (
+								<p key={index}>{item}</p>
+							)
+						)}
+						on_close={set_is_help_visible.bind(null, false)}
+					/>
 				)}
 				<button
 					className={styles["app__fab"]}
@@ -180,9 +185,15 @@ export default function App() {
 
 			<div className={styles["app__settings__wrapper"]}>
 				{is_settings_visible && (
-					<Settings
-						on_change_settings={handle_settings_change}
-						default_value={settings}
+					<FabContent
+						title="Settings"
+						children={
+							<Settings
+								on_change_settings={handle_settings_change}
+								default_value={settings}
+							/>
+						}
+						on_close={set_is_settings_visible.bind(null, false)}
 					/>
 				)}
 				<button

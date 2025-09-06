@@ -1,8 +1,9 @@
-.settings {
+.fab_content {
 	max-width: 95vw;
 	width: 350px;
 	padding: 1rem 1.25rem;
 	border-radius: 8px;
+	max-height: 60vh;
 
 	background: rgba(22, 37, 33, 0.35);
 	box-shadow: 4px 30px rgba(0, 0, 0, 0.1), inset 0 0 8px 0px #c0e0deab;
@@ -10,10 +11,19 @@
 	-webkit-backdrop-filter: blur(6.8px);
 
 	color: var(--color-ice-blue);
+	overflow-y: auto;
+	margin-bottom: 0.5rem;
 }
 
-.settings__input {
-	margin-top: 1.5rem;
+.fab_content__header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 1.5rem;
+}
+
+.fab_content__main {
+	color: white;
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;

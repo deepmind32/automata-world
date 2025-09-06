@@ -43,7 +43,7 @@
 	left: 2rem;
 }
 
-.app__help {
+.app__fab__menu {
 	max-width: 95vw;
 	width: 350px;
 	padding: 1rem 1.25rem;
@@ -57,9 +57,21 @@
 
 	color: var(--color-ice-blue);
 	overflow-y: auto;
+	margin-bottom: 0.5rem;
 }
-.app__help p:not(.app__help p:first-child) {
-	margin-top: 1rem;
+
+.app__fab__info {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 1.5rem;
+}
+
+.app__fab__content {
+	color: white;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
 }
 
 .app__settings__wrapper {
