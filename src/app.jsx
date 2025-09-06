@@ -75,8 +75,8 @@ export default function App() {
 
 	const handle_all_cell_inactive = () => {
 		set_generation_timer_running(false);
-		toast("Whoops!! All cells died. Only ghost remains.", {
-			icon: "👻",
+		toast(current_automata_info["death_note"], {
+			icon: current_automata_info["death_emoji"],
 		});
 	};
 

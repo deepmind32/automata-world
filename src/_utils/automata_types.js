@@ -12,6 +12,8 @@ const AUTOMATAS = {
 	"Conway's Game of Life": {
 		icon: GiLifeBar,
 		inactive_cells: ["Dead Cell"],
+		death_note: "Whoops! All cells died. Only ghost remains",
+		death_emoji: "👻",
 		info: "Cells live or die by neighbors",
 		default_cell: "Dead Cell",
 		initial_create_cell: "Alive Cell",
@@ -30,6 +32,8 @@ const AUTOMATAS = {
 		info: "Ant flips tiles, turns, repeats",
 		icon: HiMiniBugAnt,
 		inactive_cells: ["Black Cell", "White Cell"],
+		death_note: "The ants saw the edge of the world... and kept going.",
+		death_emoji: "🐜",
 		default_cell: "Black Cell",
 		initial_create_cell: "White Cell Forward",
 		cells: {
@@ -89,6 +93,9 @@ const AUTOMATAS = {
 		info: "Cells flash, then cool down",
 		icon: GiBrain,
 		default_cell: "Dead Cell",
+		inactive_cells: ["Dead Cell"],
+		death_note: "Whoops! All cells died. Only ghost remains.",
+		death_emoji: "👻",
 		initial_create_cell: "Alive Cell",
 		cells: {
 			"Dead Cell": {
@@ -110,6 +117,9 @@ const AUTOMATAS = {
 		icon: PiCircuitryFill,
 		default_cell: "Empty Cell",
 		initial_create_cell: "Conductor",
+		inactive_cells: ["Empty Cell"],
+		death_note: "Electron party's over. Wireworld is now Napworld.",
+		death_emoji: "⚡",
 		cells: {
 			"Empty Cell": {
 				color: "black",
