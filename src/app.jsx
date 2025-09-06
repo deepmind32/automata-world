@@ -55,7 +55,7 @@ export default function App() {
 	const [generation_timer_running, set_generation_timer_running] =
 		useState(false);
 
-	const [is_settings_visible, set_is_settings_visible] = useState(true);
+	const [is_settings_visible, set_is_settings_visible] = useState(false);
 
 	const handle_create_cell_change = (cell_name) => {
 		set_current_create_cell(cell_name);
