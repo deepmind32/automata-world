@@ -1,6 +1,11 @@
 import toast from "react-hot-toast";
 import styles from "./grid.module.css";
 import React, { forwardRef, useEffect, useRef, useState } from "react";
+import {
+	get_non_default_cells_coordiantes,
+	inverse_transform,
+	transform,
+} from "../../_utils/grid";
 
 const Grid = forwardRef(
 	(
@@ -30,7 +35,37 @@ const Grid = forwardRef(
 					.fill(null)
 					.map((_) => Array(size).fill(default_cell))
 			);
-		}, [default_cell, size]);
+		}, [default_cell]);
+
+		useEffect(() => {
+			const updated_grid = Array(size)
+				.fill(null)
+				.map((_) => Array(size).fill(default_cell));
+			const prev_size = grid.length;
+
+			const non_default_cells = get_non_default_cells_coordiantes(
+				grid,
+				default_cell
+			);
+			const prev_non_default_cartesian = non_default_cells.map(([x, y]) =>
+				transform(x, y, prev_size)
+			);
+
+			const updated_non_default = prev_non_default_cartesian.map(([x, y]) =>
+				inverse_transform(x, y, size)
+			);
+
+			for (let i = 0; i < non_default_cells.length; i++) {
+				const [prev_x, prev_y] = non_default_cells[i];
+				const prev_cell_type = grid[prev_x][prev_y];
+
+				const [new_x, new_y] = updated_non_default[i];
+				if (new_x < 0 || new_y < 0 || new_x >= size || new_y >= size) continue;
+
+				updated_grid[new_x][new_y] = prev_cell_type;
+			}
+			set_grid(updated_grid);
+		}, [size]);
 
 		useEffect(() => {
 			if (time_step > 0) {
