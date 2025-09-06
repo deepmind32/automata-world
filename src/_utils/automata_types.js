@@ -94,6 +94,14 @@ const AUTOMATAS = {
 				visible: false,
 			},
 		},
+		description: [
+			"Welcome to Langton's Ant!",
+			"You’re not just anyone: you’re the Queen Ant of this dark, pixelated void!",
+			"With a flick of your royal feelers, you summon worker ants from the abyss. Their job? Dig tunnels. Endlessly. For... reasons",
+			"At each step, these little overachievers follow one simple rule: 'If the floor looks weird, turn!' (Honestly, they’re not the brightest.)",
+			"Now sit back, your Majesty, and watch your loyal minions chaotically carve out the most unexpectedly artsy ant colony in existence.",
+			"Let the weirdness begin!",
+		],
 	},
 	"Brian's Brain": {
 		info: "Cells flash, then cool down",
@@ -117,6 +125,15 @@ const AUTOMATAS = {
 				info: "Becomes dead cell",
 			},
 		},
+		description: [
+			"Welcome to Brian’s Brain!",
+			"Somehow, you’ve found yourself in the neural fever dream of a guy named Brian. Don’t ask who Brian is. No one really knows. Maybe even Brian doesn’t know.",
+			"Here, cells don’t just live or die. Oh no—we’re way past that. These cells are either: Firing (zap zap), Ready to fire, or Recovering from being too awesome.",
+			"It’s basically a universe where every cell goes through a three-step existential crisis... and then repeats it forever.",
+			"There’s no goal, no score, no “You Win” screen. Just endless electrical chaos.",
+			"So go ahead fire up the simulation, and enjoy watching a digital brain that thinks it's doing something important.",
+			"Spoiler: It isn’t. But it looks cool.",
+		],
 	},
 	"Wire World": {
 		info: "Electrons move through wires",
@@ -144,6 +161,13 @@ const AUTOMATAS = {
 				info: "Becomes electron head if 1 or 2 neighbours",
 			},
 		},
+		description: [
+			"Welcome to Wireworld!",
+			"You’re not just playing a game, you’re an electric wizard in a universe where electrons move slow just for you. Time to bend lightning to your will.",
+			"Lay down conductors (a.k.a. glorified copper noodles), guide the flow of electrons—watch them morph from electron heads to electron tails like obedient little sparks—and design circuits that do whatever your chaotic mind desires.",
+			"There are no rules. No limits. Build logic gates. Craft a calculator. Or go full mad scientist and construct a tiny, barely-functioning computer that questions its own existence.",
+			"The sky’s the limit...",
+		],
 	},
 };
 
