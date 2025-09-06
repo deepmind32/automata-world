@@ -11,6 +11,7 @@ import { PiCircuitryFill } from "react-icons/pi";
 const AUTOMATAS = {
 	"Conway's Game of Life": {
 		icon: GiLifeBar,
+		inactive_cells: ["Dead Cell"],
 		info: "Cells live or die by neighbors",
 		default_cell: "Dead Cell",
 		initial_create_cell: "Alive Cell",
@@ -28,6 +29,7 @@ const AUTOMATAS = {
 	"Langton's Ant": {
 		info: "Ant flips tiles, turns, repeats",
 		icon: HiMiniBugAnt,
+		inactive_cells: ["Black Cell", "White Cell"],
 		default_cell: "Black Cell",
 		initial_create_cell: "White Cell Forward",
 		cells: {

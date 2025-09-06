@@ -10,6 +10,8 @@ const Grid = forwardRef(
 			default_cell,
 			current_create_cell,
 			size = 10,
+			inactive_cells,
+			on_all_cell_inactive,
 		},
 		ref
 	) => {
@@ -29,7 +31,18 @@ const Grid = forwardRef(
 
 		useEffect(() => {
 			if (time_step > 0) {
-				set_grid(compute_next_generation(grid));
+				// if everything is empty than donot run next generation
+				const flattened_grid = grid.flat();
+				const is_all_default = flattened_grid.reduce(
+					(acc, item) => acc && inactive_cells.includes(item),
+					true
+				);
+				is_all_default && on_all_cell_inactive();
+
+				if (!is_all_default) {
+					const updated_grid = compute_next_generation(grid);
+					set_grid(updated_grid);
+				}
 			} else if (time_step === 0) {
 				set_grid(
 					Array(size)

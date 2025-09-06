@@ -72,6 +72,10 @@ export default function App() {
 		}
 	};
 
+	const handle_all_cell_inactive = () => {
+		set_generation_timer_running(false);
+	}
+
 	useEffect(() => {
 		const generation_step_intervals = setInterval(() => {
 			generation_timer_running && set_generation_step((prev) => prev + 1);
@@ -105,7 +109,7 @@ export default function App() {
 						</button>
 					)}
 					<button onClick={handle_app_controls_clicked.bind(null, "next")}>
-						<BiSkipNextCircle size="2.3rem" />
+						<BiSkipNextCircle size="2.3rem" color={generation_timer_running ? "#9CA4A2" : null}/>
 					</button>
 					<button onClick={handle_app_controls_clicked.bind(null, "reset")}>
 						<RiResetLeftFill size="1.8rem" />
@@ -129,6 +133,8 @@ export default function App() {
 					cells={current_automata_info["cells"]}
 					default_cell={current_automata_info["default_cell"]}
 					current_create_cell={current_create_cell}
+					inactive_cells={current_automata_info["inactive_cells"]}
+					on_all_cell_inactive={handle_all_cell_inactive}
 				/>
 			</div>
 			<div className={styles["app__help__wrapper"]}>
