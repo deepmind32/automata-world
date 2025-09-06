@@ -14,6 +14,7 @@ import {
 	get_automata_info,
 } from "./_utils/automata_types";
 import get_next_generation_step from "./_utils/compute-next-generation";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function App() {
 	const scroll_container_ref = useRef(null);
@@ -74,7 +75,10 @@ export default function App() {
 
 	const handle_all_cell_inactive = () => {
 		set_generation_timer_running(false);
-	}
+		toast("Whoops!! All cells died. Only ghost remains.", {
+			icon: "👻",
+		});
+	};
 
 	useEffect(() => {
 		const generation_step_intervals = setInterval(() => {
@@ -88,6 +92,7 @@ export default function App() {
 
 	return (
 		<main className={styles["app"]}>
+			<Toaster />
 			<header className={styles["app__header"]}>
 				<ModernSelect
 					name="Atomata Game"
@@ -109,7 +114,10 @@ export default function App() {
 						</button>
 					)}
 					<button onClick={handle_app_controls_clicked.bind(null, "next")}>
-						<BiSkipNextCircle size="2.3rem" color={generation_timer_running ? "#9CA4A2" : null}/>
+						<BiSkipNextCircle
+							size="2.3rem"
+							color={generation_timer_running ? "#9CA4A2" : null}
+						/>
 					</button>
 					<button onClick={handle_app_controls_clicked.bind(null, "reset")}>
 						<RiResetLeftFill size="1.8rem" />
