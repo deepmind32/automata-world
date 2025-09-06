@@ -56,6 +56,7 @@ export default function App() {
 		useState(false);
 
 	const [is_settings_visible, set_is_settings_visible] = useState(false);
+	const [is_help_visible, set_is_help_visible] = useState(true);
 
 	const handle_create_cell_change = (cell_name) => {
 		set_current_create_cell(cell_name);
@@ -162,7 +163,17 @@ export default function App() {
 				/>
 			</div>
 			<div className={styles["app__help__wrapper"]}>
-				<button className={styles["app__fab"]}>
+				{is_help_visible && (
+					<div className={styles["app__help"]}>
+						{current_automata_info["description"].map((item, index) => (
+							<p key={index}>{item}</p>
+						))}
+					</div>
+				)}
+				<button
+					className={styles["app__fab"]}
+					onClick={set_is_help_visible.bind(null, !is_help_visible)}
+				>
 					<LuBadgeHelp size="3rem" />
 				</button>
 			</div>

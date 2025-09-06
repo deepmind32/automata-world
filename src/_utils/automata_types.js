@@ -27,6 +27,12 @@ const AUTOMATAS = {
 				info: "Lives if 2 or 3 alive neighbours",
 			},
 		},
+		description: [
+			"Conway's Game of Life is a perfect example of complex patterns emerging from simple rules.",
+			"There are two kinds of cells: white for life, black for death. It's a binary world - but don't worry, you're the god here.",
+			"You have the divine power to breathe life into this dark, lifeless grid. With a flick of your cursor, you can create patterns - some that flourish, some that fizzle out, and others that settle into peaceful stability.",
+			"The game is entirely deterministic, yet predicting the outcome without running the simulation? Practically divine guesswork. So go ahead and say, ‘Let there be life,’ and watch as your world unfold.",
+		],
 	},
 	"Langton's Ant": {
 		info: "Ant flips tiles, turns, repeats",
