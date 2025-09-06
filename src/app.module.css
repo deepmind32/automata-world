@@ -46,16 +46,23 @@
 .app__settings__wrapper {
 	left: auto;
 	right: 2rem;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 1rem;
 }
 
 .app__fab {
-	background-color: var(--color-gun-metal);
 	outline: none;
-	border: none;
 	color: var(--color-ice-blue);
 	padding: 0.4rem;
 	border-radius: 100px;
 	transition: transform 0.25s ease-in;
+
+	background: rgba(22, 37, 33, 0.35);
+	box-shadow: 4px 30px rgba(0, 0, 0, 0.1), inset 0 0 8px 0px #c0e0deab;
+	backdrop-filter: blur(6.8px);
+	-webkit-backdrop-filter: blur(6.8px);
 }
 
 .app__fab:hover {

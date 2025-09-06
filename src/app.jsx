@@ -15,10 +15,16 @@ import {
 } from "./_utils/automata_types";
 import get_next_generation_step from "./_utils/compute-next-generation";
 import toast, { Toaster } from "react-hot-toast";
+import Settings from "./_components/settings/settings";
 
 export default function App() {
 	const scroll_container_ref = useRef(null);
 	const grid_ref = useRef(null);
+	const [settings, set_settings] = useState({
+		cell_width: 50,
+		simulation_speed: 1,
+		cells: 30,
+	});
 
 	useEffect(() => {
 		const container = scroll_container_ref.current;
@@ -48,6 +54,8 @@ export default function App() {
 	const [generation_step, set_generation_step] = useState(0);
 	const [generation_timer_running, set_generation_timer_running] =
 		useState(false);
+
+	const [is_settings_visible, set_is_settings_visible] = useState(true);
 
 	const handle_create_cell_change = (cell_name) => {
 		set_current_create_cell(cell_name);
@@ -82,15 +90,19 @@ export default function App() {
 			});
 	};
 
+	const handle_settings_change = (new_settings) => {
+		set_settings(new_settings);
+	};
+
 	useEffect(() => {
 		const generation_step_intervals = setInterval(() => {
 			generation_timer_running && set_generation_step((prev) => prev + 1);
-		}, 250);
+		}, 250 / settings["simulation_speed"]);
 
 		return () => {
 			clearInterval(generation_step_intervals);
 		};
-	}, [generation_timer_running]);
+	}, [generation_timer_running, settings["simulation_speed"]]);
 
 	return (
 		<main className={styles["app"]}>
@@ -139,7 +151,8 @@ export default function App() {
 					compute_next_generation={get_next_generation_step(current_automata)}
 					ref={grid_ref}
 					time_step={generation_step}
-					size={30}
+					size={settings["cells"]}
+					cell_width={settings["cell_width"]}
 					cells={current_automata_info["cells"]}
 					default_cell={current_automata_info["default_cell"]}
 					current_create_cell={current_create_cell}
@@ -155,7 +168,16 @@ export default function App() {
 			</div>
 
 			<div className={styles["app__settings__wrapper"]}>
-				<button className={styles["app__fab"]}>
+				{is_settings_visible && (
+					<Settings
+						on_change_settings={handle_settings_change}
+						default_value={settings}
+					/>
+				)}
+				<button
+					className={styles["app__fab"]}
+					onClick={set_is_settings_visible.bind(null, !is_settings_visible)}
+				>
 					<TbSettingsBolt size="3rem" />
 				</button>
 			</div>

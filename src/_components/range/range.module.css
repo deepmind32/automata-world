@@ -1,0 +1,60 @@
+.slider__wrapper {
+}
+.slider__label {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 0.4rem;
+	align-items: flex-end;
+}
+.slider__label p:first-child {
+	font-size: 1rem;
+	font-weight: 300;
+	color: white;
+}
+.slider__label p:last-child {
+	font-size: 0.8rem;
+}
+
+.slider__info {
+	display: flex;
+	justify-content: space-between;
+}
+.slider__info p {
+	font-size: 0.7rem;
+	color: #a99e9e;
+	font-weight: 300;
+}
+
+.slider {
+	-webkit-appearance: none;
+	width: 100%;
+	height: 8px;
+	border-radius: 5px;
+	outline: none;
+	background-color: var(--color-mint-green);
+}
+
+/* Update value dynamically via inline style or JS if needed */
+.slider::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	width: 20px;
+	height: 20px;
+	background: var(--color-steel-blue);
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+	width: 20px;
+	height: 20px;
+	background: var(--color-steel-blue);
+	border: none;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.slider::-moz-range-track {
+	height: 8px;
+	border-radius: 5px;
+	background: #ddd;
+}

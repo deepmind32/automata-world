@@ -43,3 +43,7 @@ body * {
 	scrollbar-width: thin;
 	scrollbar-color: var(--color-gun-metal) var(--color-outer-space); /* thumb track */
 }
+
+h3 {
+	font-size: 1.25rem;
+}

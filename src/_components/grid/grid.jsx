@@ -11,6 +11,7 @@ const Grid = forwardRef(
 			default_cell,
 			current_create_cell,
 			size = 10,
+			cell_width = 5,
 			inactive_cells,
 			on_all_cell_inactive,
 			grid_active,
@@ -73,8 +74,9 @@ const Grid = forwardRef(
 				className={styles["grid"]}
 				ref={ref}
 				style={{
-					gridTemplateColumns: `repeat(${size}, 50px)`,
-					gridTemplateRows: `repeat(${size}, 50px)`,
+					gridTemplateColumns: `repeat(${size}, ${cell_width}px)`,
+					gridTemplateRows: `repeat(${size}, ${cell_width}px)`,
+					gap: cell_width / 10,
 				}}
 			>
 				{grid.map((values, i) => (
@@ -87,14 +89,16 @@ const Grid = forwardRef(
 									key={j}
 									className={styles["grid__cell"]}
 									onClick={handle_cell_clicked.bind(null, i, j)}
-									style={{ backgroundColor: cells[cell_name]?.color }}
+									style={{
+										width: cell_width,
+										height: cell_width,
+										backgroundColor: cells[cell_name]?.color,
+									}}
 								>
 									{Cell_icon ? (
-										<Cell_icon color="#9CA4A2" />
+										<Cell_icon color="#9CA4A2" size={`${cell_width / 50}rem`} />
 									) : (
-										<>
-											{i}, {j}
-										</>
+										<></>
 									)}
 								</button>
 							);
