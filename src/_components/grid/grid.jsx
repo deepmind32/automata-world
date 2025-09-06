@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import styles from "./grid.module.css";
 import React, { forwardRef, useEffect, useRef, useState } from "react";
 
@@ -12,6 +13,7 @@ const Grid = forwardRef(
 			size = 10,
 			inactive_cells,
 			on_all_cell_inactive,
+			grid_active,
 		},
 		ref
 	) => {
@@ -53,11 +55,17 @@ const Grid = forwardRef(
 		}, [time_step]);
 
 		const handle_cell_clicked = (i, j) => {
-			set_grid((prev) => {
-				const new_prev = [...prev];
-				new_prev[i][j] = current_create_cell;
-				return new_prev;
-			});
+			if (grid_active) {
+				set_grid((prev) => {
+					const new_prev = [...prev];
+					new_prev[i][j] = current_create_cell;
+					return new_prev;
+				});
+			} else {
+				toast.error("Pause the simulation before editing", {
+					position: "top-left",
+				});
+			}
 		};
 
 		return (

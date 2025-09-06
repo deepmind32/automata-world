@@ -75,9 +75,11 @@ export default function App() {
 
 	const handle_all_cell_inactive = () => {
 		set_generation_timer_running(false);
-		toast(current_automata_info["death_note"], {
-			icon: current_automata_info["death_emoji"],
-		});
+		generation_timer_running &&
+			toast(current_automata_info["death_note"], {
+				icon: current_automata_info["death_emoji"],
+				position: "top-left",
+			});
 	};
 
 	useEffect(() => {
@@ -143,6 +145,7 @@ export default function App() {
 					current_create_cell={current_create_cell}
 					inactive_cells={current_automata_info["inactive_cells"]}
 					on_all_cell_inactive={handle_all_cell_inactive}
+					grid_active={!generation_timer_running}
 				/>
 			</div>
 			<div className={styles["app__help__wrapper"]}>
