@@ -57,6 +57,8 @@
 }
 
 .option_picker__options__sample {
+	min-width: 2rem;
+	min-height: 2rem;
 	width: 2rem;
 	height: 2rem;
 	border-radius: 1rem;
