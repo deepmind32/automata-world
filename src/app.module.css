@@ -53,14 +53,21 @@
 }
 
 @media screen and (max-width: 700px) {
+	.app__header {
+		gap: 0.5rem;
+	}
+
 	.app__grid {
 		margin: 0.5rem;
 	}
-	
+
 	.app__help__wrapper,
 	.app__settings__wrapper {
 		bottom: 1rem;
 		left: 1rem;
+	}
+	.app__settings__wrapper {
+		right: 1rem;
 	}
 }
 
