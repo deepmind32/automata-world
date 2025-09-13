@@ -4,6 +4,7 @@ import { TbSettingsBolt } from "react-icons/tb";
 import { FaRegCirclePause, FaRegCirclePlay } from "react-icons/fa6";
 import { RiResetLeftFill } from "react-icons/ri";
 import { BiSkipNextCircle } from "react-icons/bi";
+import { GoMute, GoUnmute } from "react-icons/go";
 
 import Grid from "./_components/grid/grid";
 import styles from "./app.module.css";
@@ -44,9 +45,7 @@ export default function App() {
 	}, []);
 
 	const all_automatas = get_all_automata();
-	const [current_automata, set_current_automata] = useState(
-		"Langton's Ant"
-	);
+	const [current_automata, set_current_automata] = useState("Langton's Ant");
 	const current_automata_info = get_automata_info(current_automata);
 
 	const [current_create_cell, set_current_create_cell] = useState(
@@ -58,6 +57,7 @@ export default function App() {
 
 	const [is_settings_visible, set_is_settings_visible] = useState(false);
 	const [is_help_visible, set_is_help_visible] = useState(false);
+	const [is_mute, set_is_mute] = useState(false);
 
 	const handle_create_cell_change = (cell_name) => {
 		set_current_create_cell(cell_name);
@@ -80,6 +80,10 @@ export default function App() {
 		} else if (type === "reset") {
 			set_generation_timer_running(false);
 			set_generation_step(0);
+		} else if (type === "mute") {
+			set_is_mute(true);
+		} else if (type === "unmute") {
+			set_is_mute(false);
 		}
 	};
 
@@ -138,6 +142,16 @@ export default function App() {
 					<button onClick={handle_app_controls_clicked.bind(null, "reset")}>
 						<RiResetLeftFill size="1.8rem" />
 					</button>
+					{!is_mute && (
+						<button onClick={handle_app_controls_clicked.bind(null, "mute")}>
+							<GoMute size="1.8rem" />
+						</button>
+					)}
+					{is_mute && (
+						<button onClick={handle_app_controls_clicked.bind(null, "unmute")}>
+							<GoUnmute size="1.8rem" />
+						</button>
+					)}
 				</div>
 
 				<ModernSelect
@@ -163,6 +177,7 @@ export default function App() {
 					grid_active={!generation_timer_running}
 					active_cell={current_automata_info["active_cell"]}
 					inactive_cell={current_automata_info["inactive_cell"]}
+					mute={is_mute}
 				/>
 			</div>
 			<div className={styles["app__help__wrapper"]}>

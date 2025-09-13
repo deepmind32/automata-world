@@ -7,7 +7,7 @@ export default function FabContent({ title, children, on_close }) {
 			<div className={styles["fab_content__header"]}>
 				<h3>{title}</h3>
 				<button onClick={on_close}>
-					<AiOutlineCloseCircle size="1.5rem" color="#a99e9e" />
+					<AiOutlineCloseCircle size="1.5rem" color="var(--color-mint-green)" />
 				</button>
 			</div>
 

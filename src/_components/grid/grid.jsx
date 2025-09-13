@@ -25,6 +25,7 @@ const Grid = forwardRef(
 			grid_active,
 			active_cell,
 			inactive_cell,
+			mute,
 		},
 		ref
 	) => {
@@ -86,10 +87,16 @@ const Grid = forwardRef(
 				if (!is_all_default) {
 					const updated_grid = compute_next_generation(grid);
 
-					const updated_cells = get_grid_difference(grid, updated_grid, size);
-					const notes = create_notes(updated_cells, active_cell, inactive_cell);
+					if (!mute) {
+						const updated_cells = get_grid_difference(grid, updated_grid, size);
+						const notes = create_notes(
+							updated_cells,
+							active_cell,
+							inactive_cell
+						);
 
-					play_note(notes)
+						play_note(notes);
+					}
 
 					set_grid(updated_grid);
 				}
