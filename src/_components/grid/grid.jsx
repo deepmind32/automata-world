@@ -1,11 +1,24 @@
+import * as Tone from "tone";
 import toast from "react-hot-toast";
 import styles from "./grid.module.css";
 import React, { forwardRef, useEffect, useRef, useState } from "react";
 import {
+	get_grid_difference,
 	get_non_default_cells_coordiantes,
 	inverse_transform,
 	transform,
 } from "../../_utils/grid";
+import { create_notes } from "../../_utils/tone";
+
+const play_note = async (notes) => {
+	await Tone.start(); // Required to start audio context on user interaction
+
+	const synth = new Tone.PolySynth(Tone.Synth).toDestination();
+
+	notes.forEach((note) => {
+		synth.triggerAttackRelease(note, "8n");
+	});
+};
 
 const Grid = forwardRef(
 	(
@@ -79,6 +92,11 @@ const Grid = forwardRef(
 
 				if (!is_all_default) {
 					const updated_grid = compute_next_generation(grid);
+
+					const updated_cells = get_grid_difference(grid, updated_grid, size);
+					const notes = create_notes(updated_cells, "White Cell", "Black Cell");
+					play_note(notes);
+
 					set_grid(updated_grid);
 				}
 			} else if (time_step === 0) {

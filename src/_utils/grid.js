@@ -26,3 +26,24 @@ export function get_non_default_cells_coordiantes(grid, default_cell) {
 
 	return non_default_cells;
 }
+
+export function get_grid_difference(grid, updated_grid, size) {
+	const [flattened_grid, flattened_updated_grid] = [
+		grid.flat(),
+		updated_grid.flat(),
+	];
+	const grid_indexes = Array(flattened_grid.length)
+		.fill(null)
+		.map((_, index) => index);
+	const updated_grid_indexes = grid_indexes.filter(
+		(item) => flattened_grid[item] !== flattened_updated_grid[item]
+	);
+	const updated_grid_info = updated_grid_indexes.map((index) => ({
+		i: Math.floor(index / size),
+		j: index % size,
+		from: flattened_grid[index],
+		to: flattened_updated_grid[index],
+	}));
+
+	return updated_grid_info;
+}
