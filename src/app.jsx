@@ -45,7 +45,7 @@ export default function App() {
 
 	const all_automatas = get_all_automata();
 	const [current_automata, set_current_automata] = useState(
-		"Conway's Game of Life"
+		"Langton's Ant"
 	);
 	const current_automata_info = get_automata_info(current_automata);
 
@@ -114,7 +114,7 @@ export default function App() {
 					name="Atomata Game"
 					type="icon"
 					options={all_automatas}
-					initial_option="Conway's Game of Life"
+					initial_option="Langton's Ant"
 					on_option_change={handle_automata_change}
 				/>
 
@@ -161,6 +161,8 @@ export default function App() {
 					inactive_cells={current_automata_info["inactive_cells"]}
 					on_all_cell_inactive={handle_all_cell_inactive}
 					grid_active={!generation_timer_running}
+					active_cell={current_automata_info["active_cell"]}
+					inactive_cell={current_automata_info["inactive_cell"]}
 				/>
 			</div>
 			<div className={styles["app__help__wrapper"]}>

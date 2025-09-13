@@ -11,7 +11,7 @@ import {
 import { create_notes } from "../../_utils/tone";
 
 const play_note = async (notes) => {
-	await Tone.start(); // Required to start audio context on user interaction
+	await Tone.start();
 
 	const synth = new Tone.Synth().toDestination();
 	let now = Tone.now();
@@ -35,6 +35,8 @@ const Grid = forwardRef(
 			inactive_cells,
 			on_all_cell_inactive,
 			grid_active,
+			active_cell,
+			inactive_cell
 		},
 		ref
 	) => {
@@ -96,7 +98,7 @@ const Grid = forwardRef(
 					const updated_grid = compute_next_generation(grid);
 
 					const updated_cells = get_grid_difference(grid, updated_grid, size);
-					const notes = create_notes(updated_cells, "White Cell", "Black Cell");
+					const notes = create_notes(updated_cells, active_cell, inactive_cell);
 					play_note(notes);
 
 					set_grid(updated_grid);

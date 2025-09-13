@@ -9,31 +9,6 @@ import { HiMiniBugAnt } from "react-icons/hi2";
 import { PiCircuitryFill } from "react-icons/pi";
 
 const AUTOMATAS = {
-	"Conway's Game of Life": {
-		icon: GiLifeBar,
-		inactive_cells: ["Dead Cell"],
-		death_note: "Whoops! All cells died. Only ghost remains",
-		death_emoji: "👻",
-		info: "Cells live or die by neighbors",
-		default_cell: "Dead Cell",
-		initial_create_cell: "Alive Cell",
-		cells: {
-			"Dead Cell": {
-				color: "black",
-				info: "Becomes alive if 3 alive neighbours",
-			},
-			"Alive Cell": {
-				color: "yellow",
-				info: "Lives if 2 or 3 alive neighbours",
-			},
-		},
-		description: [
-			"Conway's Game of Life is a perfect example of complex patterns emerging from simple rules.",
-			"There are two kinds of cells: white for life, black for death. It's a binary world - but don't worry, you're the god here.",
-			"You have the divine power to breathe life into this dark, lifeless grid. With a flick of your cursor, you can create patterns - some that flourish, some that fizzle out, and others that settle into peaceful stability.",
-			"The game is entirely deterministic, yet predicting the outcome without running the simulation? Practically divine guesswork. So go ahead and say, ‘Let there be life,’ and watch as your world unfold.",
-		],
-	},
 	"Langton's Ant": {
 		info: "Ant flips tiles, turns, repeats",
 		icon: HiMiniBugAnt,
@@ -42,6 +17,8 @@ const AUTOMATAS = {
 		death_emoji: "🐜",
 		default_cell: "Black Cell",
 		initial_create_cell: "White Cell Forward",
+		active_cell: "White Cell",
+		inactive_cell: "Black Cell",
 		cells: {
 			"Black Cell Forward": {
 				name: "Ant on Black Cell",
@@ -103,6 +80,33 @@ const AUTOMATAS = {
 			"Let the weirdness begin!",
 		],
 	},
+	"Conway's Game of Life": {
+		icon: GiLifeBar,
+		inactive_cells: ["Dead Cell"],
+		death_note: "Whoops! All cells died. Only ghost remains",
+		death_emoji: "👻",
+		info: "Cells live or die by neighbors",
+		default_cell: "Dead Cell",
+		initial_create_cell: "Alive Cell",
+		active_cell: "Alive Cell",
+		inactive_cell: "Dead Cell",
+		cells: {
+			"Dead Cell": {
+				color: "black",
+				info: "Becomes alive if 3 alive neighbours",
+			},
+			"Alive Cell": {
+				color: "yellow",
+				info: "Lives if 2 or 3 alive neighbours",
+			},
+		},
+		description: [
+			"Conway's Game of Life is a perfect example of complex patterns emerging from simple rules.",
+			"There are two kinds of cells: white for life, black for death. It's a binary world - but don't worry, you're the god here.",
+			"You have the divine power to breathe life into this dark, lifeless grid. With a flick of your cursor, you can create patterns - some that flourish, some that fizzle out, and others that settle into peaceful stability.",
+			"The game is entirely deterministic, yet predicting the outcome without running the simulation? Practically divine guesswork. So go ahead and say, ‘Let there be life,’ and watch as your world unfold.",
+		],
+	},
 	"Brian's Brain": {
 		info: "Cells flash, then cool down",
 		icon: GiBrain,
@@ -111,6 +115,8 @@ const AUTOMATAS = {
 		death_note: "Whoops! All cells died. Only ghost remains.",
 		death_emoji: "👻",
 		initial_create_cell: "Alive Cell",
+		active_cell: "Alive Cell",
+		inactive_cell: "Dead Cell",
 		cells: {
 			"Dead Cell": {
 				color: "black",
@@ -143,6 +149,8 @@ const AUTOMATAS = {
 		inactive_cells: ["Empty Cell"],
 		death_note: "Electron party's over. Wireworld is now Napworld.",
 		death_emoji: "⚡",
+		active_cell: "Conductor",
+		inactive_cell: "Electron Head",
 		cells: {
 			"Empty Cell": {
 				color: "black",
