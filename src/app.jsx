@@ -67,6 +67,9 @@ export default function App() {
 		set_current_create_cell(
 			get_automata_info(automata_name)["initial_create_cell"]
 		);
+		set_generation_timer_running(false);
+		set_is_help_visible(false);
+		set_is_settings_visible(false);
 	};
 
 	const handle_app_controls_clicked = (type) => {
