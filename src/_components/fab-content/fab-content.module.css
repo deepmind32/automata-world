@@ -1,5 +1,5 @@
 .fab_content {
-	max-width: 95vw;
+	max-width: 80vw;
 	width: 400px;
 	padding: 1rem 1.25rem;
 	border-radius: 8px;
@@ -13,6 +13,7 @@
 	color: var(--color-ice-blue);
 	overflow-y: auto;
 	margin-bottom: 0.5rem;
+	z-index: 2;
 }
 
 .fab_content__header {

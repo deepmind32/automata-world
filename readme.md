@@ -7,6 +7,8 @@ This repository contains website that implements various games realted to cellul
 3. Brian's Brain
 4. Wire World
 
+As the automata unfolds, you will be able to see amazing patterns and hear the sound with evolution of the automata space.
+
 Below is the rules and explanation of each game.
 
 ## Conway's Game of Life
