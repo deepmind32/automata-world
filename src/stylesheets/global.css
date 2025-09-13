@@ -13,6 +13,9 @@ body {
 	font-weight: 400;
 	background-color: var(--color-gun-metal);
 	color: white;
+	max-width: 100vw;
+	max-height: 100vh;
+	position: relative;
 }
 
 body * {
