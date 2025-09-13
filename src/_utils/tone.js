@@ -1,9 +1,8 @@
-const LETTERS = ["C", "D", "E", "F", "G", "A", "B"];
-// const OCTAVES = [-4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-const OCTAVES = [-1, 0, 1, 2];
+const LETTERS = ["C", "D", "E", "G", "A"];
+const OCTAVES = [3, 4, 5];
 const ACCIDENTAL = {
-	active: "b",
-	passive: "x",
+	active: "#",
+	passive: "b",
 	normal: "",
 };
 
@@ -31,5 +30,6 @@ export function create_notes(updated_cells, active_cell, passive_cell) {
 	const final_notes = letters.map(
 		(note, index) => `${note}${octaves[index]}${accidentals[index]}`
 	);
+	console.log(final_notes)
 	return final_notes;
 }

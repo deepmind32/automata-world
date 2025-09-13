@@ -13,10 +13,12 @@ import { create_notes } from "../../_utils/tone";
 const play_note = async (notes) => {
 	await Tone.start(); // Required to start audio context on user interaction
 
-	const synth = new Tone.PolySynth(Tone.Synth).toDestination();
+	const synth = new Tone.Synth().toDestination();
+	let now = Tone.now();
 
-	notes.forEach((note) => {
-		synth.triggerAttackRelease(note, "8n");
+
+	notes.forEach((note, index) => {
+		synth.triggerAttackRelease(note, "8n", now + index * 0.5);
 	});
 };
 
