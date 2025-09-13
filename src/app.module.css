@@ -52,6 +52,18 @@
 	left: 2rem;
 }
 
+@media screen and (max-width: 700px) {
+	.app__grid {
+		margin: 0.5rem;
+	}
+	
+	.app__help__wrapper,
+	.app__settings__wrapper {
+		bottom: 1rem;
+		left: 1rem;
+	}
+}
+
 .app__fab__menu {
 	max-width: 95vw;
 	width: 350px;
