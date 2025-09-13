@@ -95,7 +95,7 @@ export default function App() {
 		generation_timer_running &&
 			toast(current_automata_info["death_note"], {
 				icon: current_automata_info["death_emoji"],
-				position: "top-left",
+				position: "bottom-center",
 			});
 	};
 

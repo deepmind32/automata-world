@@ -41,3 +41,9 @@ Below is the rules and explanation of each game.
 1. electron head becomes electron tail
 2. electron tail becomes conductor
 3. conductor becomes head if 1-2 neighbours are head else conductor
+
+
+## What does this project means?
+Imagine a world where the activitiy is defined by simple rules. The rules made the world deterministic but despite that it is very difficult to predict the next state of the world. The only way to predict the next state is by simply simulating it.
+
+If there is such difficulty in this small world, now imagine predicitng the next state for our universe which have as much as infinite rules. But, if we have enough computational power and if we have all the rules, can you simulate the world. Or the biggest question can you simulate human brain? and if there is a free will.
