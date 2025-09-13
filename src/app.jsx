@@ -115,7 +115,7 @@ export default function App() {
 			<Toaster />
 			<header className={styles["app__header"]}>
 				<ModernSelect
-					name="Atomata Game"
+					name="Automata Game"
 					type="icon"
 					options={all_automatas}
 					initial_option="Langton's Ant"
