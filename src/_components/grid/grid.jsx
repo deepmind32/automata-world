@@ -10,18 +10,6 @@ import {
 } from "../../_utils/grid";
 import { create_notes } from "../../_utils/tone";
 
-const play_note = async (notes) => {
-	await Tone.start();
-
-	const synth = new Tone.Synth().toDestination();
-	let now = Tone.now();
-
-
-	notes.forEach((note, index) => {
-		synth.triggerAttackRelease(note, "8n", now + index * 0.5);
-	});
-};
-
 const Grid = forwardRef(
 	(
 		{
@@ -36,10 +24,11 @@ const Grid = forwardRef(
 			on_all_cell_inactive,
 			grid_active,
 			active_cell,
-			inactive_cell
+			inactive_cell,
 		},
 		ref
 	) => {
+		const synth_ref = useRef(null);
 		const [grid, set_grid] = useState(
 			Array(size)
 				.fill(null)
@@ -99,7 +88,8 @@ const Grid = forwardRef(
 
 					const updated_cells = get_grid_difference(grid, updated_grid, size);
 					const notes = create_notes(updated_cells, active_cell, inactive_cell);
-					play_note(notes);
+
+					play_note(notes)
 
 					set_grid(updated_grid);
 				}
@@ -111,6 +101,34 @@ const Grid = forwardRef(
 				);
 			}
 		}, [time_step]);
+
+		useEffect(() => {
+			synth_ref.current = new Tone.Synth().toDestination();
+
+			return () => {
+				if (synth_ref.current) {
+					synth_ref.current.dispose();
+					synth_ref.current = null;
+				}
+			};
+		}, []);
+
+		const play_note = async (notes) => {
+			if (notes.length === 0) return;
+
+			if (Tone.context.state !== "running") {
+				await Tone.start();
+			}
+
+			const synth = synth_ref.current;
+			if (!synth) return;
+
+			let now = Tone.now();
+
+			notes.forEach((note, index) => {
+				synth.triggerAttackRelease(note, "8n", now + index * 0.5);
+			});
+		};
 
 		const handle_cell_clicked = (i, j) => {
 			if (grid_active) {
